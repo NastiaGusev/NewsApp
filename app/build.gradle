@@ -21,6 +21,12 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        Properties properties = new Properties()
+        File localPropertiesFile = project.rootProject.file("local.properties")
+        properties.load(new FileInputStream(localPropertiesFile))
+
+        buildConfigField("String", "API_KEY", properties.getProperty("API_KEY", ""))
     }
 
     buildTypes {
@@ -37,6 +43,7 @@ android {
         jvmTarget = '17'
     }
     buildFeatures {
+        buildConfig = true
         compose true
     }
     composeOptions {
