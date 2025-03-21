@@ -14,13 +14,13 @@ import kotlinx.coroutines.flow.map
 class LocalUserManagerImpl(private val context: Context) : LocalUserManager {
     override suspend fun saveAppEntry() {
         context.dataStore.edit { settings ->
-            settings[PrefrencesKeys.APP_ENTRY] = true
+            settings[PreferencesKeys.APP_ENTRY] = true
         }
     }
 
     override fun readAppEntry(): Flow<Boolean> {
         return context.dataStore.data.map { preferences ->
-            preferences[PrefrencesKeys.APP_ENTRY] ?: false
+            preferences[PreferencesKeys.APP_ENTRY] ?: false
         }
     }
 
@@ -29,6 +29,6 @@ class LocalUserManagerImpl(private val context: Context) : LocalUserManager {
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = Constants.USER_SETTINGS)
 
-private object PrefrencesKeys {
+private object PreferencesKeys {
     val APP_ENTRY = booleanPreferencesKey(name = Constants.APP_ENTRY)
 }

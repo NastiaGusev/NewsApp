@@ -1,4 +1,4 @@
-package com.loc.newsapp.dependencyInjection
+package com.loc.newsapp.di
 
 import android.app.Application
 import com.loc.newsapp.data.LocalUserManagerImpl
