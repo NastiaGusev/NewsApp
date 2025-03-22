@@ -33,7 +33,8 @@ import com.loc.newsapp.presentation.nvgraph.Route
 @Composable
 fun HomeScreen(
     articles: LazyPagingItems<Article>,
-    navigate: (String) -> Unit
+    navigateToSearch: () -> Unit,
+    navigateToDetails: (Article) -> Unit
 ) {
     val titles by remember {
         derivedStateOf {
@@ -72,7 +73,9 @@ fun HomeScreen(
             text = "",
             readOnly = true,
             onValueChange = {},
-            onSearch = {},
+            onSearch = {
+                navigateToSearch()
+            },
             onClick = {}
         )
 
@@ -91,7 +94,9 @@ fun HomeScreen(
         ArticlesList(
             modifier = Modifier.padding(horizontal = MediumPadding1),
             articles = articles,
-            onClick = {}
+            onClick = {
+                navigateToDetails(it)
+            }
         )
     }
 }

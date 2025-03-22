@@ -2,7 +2,6 @@ package com.loc.newsapp.presentation.details
 
 import android.content.Intent
 import android.content.res.Configuration
-import android.provider.MediaStore.Audio.Media
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -65,7 +64,7 @@ fun DetailsScreen(
                 }
             },
             onBookmarkClick = {
-                event(DetailsEvent.SaveArticle)
+                event(DetailsEvent.UpsertDeleteArticle(article = article))
             },
             onBackClick = {
                 navigateUp()
